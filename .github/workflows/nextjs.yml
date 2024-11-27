@@ -28,7 +28,7 @@ jobs:
         run: npm run export
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.2.0
+        uses: actions/deploy-pages@v4
         with:
           branch: gh-pages  # GitHub Pages branch
           folder: out       # Output folder for static files (Next.js default)
