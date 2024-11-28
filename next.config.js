@@ -1,8 +1,6 @@
 // next.config.js
 const nextConfig = {
-  output: 'export',
-  reactStrictMode: true,
-  assetPrefix: ''
+  trailingSlash: true
 }
 
 module.exports = nextConfig
