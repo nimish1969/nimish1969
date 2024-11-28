@@ -1,9 +1,7 @@
 // next.config.js
-const nextConfig = {
+module.exports = {
   basePath: '', 
   assetPrefix: '',
   output: 'export',
   reactStrictMode: true
 }
-
-module.exports = nextConfig
