@@ -62,9 +62,9 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
 
-      - name: Remove basePath from next.config.js
+      - name: Override next.config.js basePath
         run: |
-          sed -i '' 's/basePath: .*/basePath: \'\',/' next.config.js  # Remove or set basePath to an empty string
+          echo "module.exports = { basePath: '', assetPrefix: '', output: 'export', reactStrictMode: true };" > next.config.js
 
       - name: Restore cache
         uses: actions/cache@v4
