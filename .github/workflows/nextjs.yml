@@ -62,12 +62,9 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
 
-      - name: Set basePath environment variable
-        run: echo "BASE_PATH=''" >> $GITHUB_ENV  # Set basePath dynamically
-
-      - name: Override next.config.js with basePath
+      - name: Remove basePath from next.config.js
         run: |
-          echo "module.exports = { basePath: '${{ env.BASE_PATH }}', assetPrefix: '${{ env.BASE_PATH }}', output: 'export', reactStrictMode: true };" > next.config.js
+          sed -i '' 's/basePath: .*/basePath: \'\',/' next.config.js  # Remove or set basePath to an empty string
 
       - name: Restore cache
         uses: actions/cache@v4
