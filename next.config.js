@@ -2,8 +2,7 @@
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  assetPrefix: '',
+  assetPrefix: ''
 }
 
 module.exports = nextConfig
-  
