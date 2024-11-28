@@ -61,6 +61,14 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+
+      - name: Set basePath environment variable
+        run: echo "BASE_PATH=''" >> $GITHUB_ENV  # Set basePath dynamically
+
+      - name: Override next.config.js with basePath
+        run: |
+          echo "module.exports = { basePath: '${{ env.BASE_PATH }}', assetPrefix: '${{ env.BASE_PATH }}', output: 'export', reactStrictMode: true };" > next.config.js
+
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -84,7 +92,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://nimish1969.github.io
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
